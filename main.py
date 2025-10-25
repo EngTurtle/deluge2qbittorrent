@@ -1,10 +1,14 @@
 """Main entry point for the Deluge to qBittorrent migration tool."""
 
+import sys
 from loguru import logger
+import qbittorrentapi
+from deluge_client.client import RemoteException
 
 from src.logging import setup_logging
 from src.config import load_config
 from src.connections import connect_deluge, connect_qbittorrent
+from src.migrate import deluge_migrate_qbittorrent
 
 
 def main():
@@ -16,14 +20,19 @@ def main():
     # Load configuration
     config = load_config()
 
-    # Connect to both clients (will exit on failure)
-    deluge_client = connect_deluge(config)
-    qbt_client = connect_qbittorrent(config)
-
-    logger.info("Ready to begin migration")
-
-    # TODO: Implement migration logic here
-    logger.info("Migration logic not yet implemented")
+    # Connect to both clients
+    try:
+        with connect_deluge(config) as deluge_client, connect_qbittorrent(config) as qbt_client:
+            deluge_migrate_qbittorrent(deluge_client, qbt_client)
+    except (RemoteException, qbittorrentapi.LoginFailed) as e:
+        logger.error(f"Authentication failed: {e}")
+        sys.exit(1)
+    except (ConnectionRefusedError, qbittorrentapi.APIConnectionError) as e:
+        logger.error(f"Connection failed: {e}")
+        sys.exit(1)
+    except Exception as e:
+        logger.error(f"Unexpected error: {e}")
+        sys.exit(1)
 
 
 if __name__ == "__main__":

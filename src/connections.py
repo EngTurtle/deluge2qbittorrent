@@ -29,9 +29,7 @@ def connect_deluge(config: Config) -> DelugeRPCClient:
             config.deluge["username"],
             config.deluge["password"],
         )
-        client.connect()
-
-        logger.info("Successfully connected to Deluge")
+        # Connection will be established by context manager's __enter__ method
         return client
 
     except ConnectionRefusedError:
@@ -58,14 +56,12 @@ def connect_qbittorrent(config: Config) -> qbittorrentapi.Client:
     try:
         logger.info(f"Connecting to qBittorrent at {config.qbittorrent['host']}")
 
+        # qbittorrent-api Client automatically authenticates when used as context manager
         client = qbittorrentapi.Client(
             host=config.qbittorrent["host"],
             username=config.qbittorrent["username"],
             password=config.qbittorrent["password"],
         )
-        client.auth_log_in()
-
-        logger.info(f"Successfully connected to qBittorrent (version {client.app.version})")
         return client
 
     except qbittorrentapi.LoginFailed:
