@@ -26,28 +26,35 @@ A Python utility to migrate torrents from Deluge to qBittorrent via their respec
 
 1. Clone this repository:
 
-```powershell
+```bash
 git clone <repository-url>
 cd deluge2qbittorrent
 ```
 
 2. Install dependencies:
 
-```powershell
+```bash
 uv sync
 ```
 
 ## Configuration
 
-Before running the migration, ensure you have:
+### Create config.toml
 
-1. Network access to both Deluge daemon and qBittorrent Web UI
-2. Valid credentials for both services
-3. Verified that download file paths are accessible to both torrent clients
+1. Copy the example configuration file to `config.toml`
+
+2. Edit `config.toml` with your credentials for Deluge RPC and qBittorrent web UI.
+
+### Configuration Notes
+
+- **Deluge port**: The default Deluge daemon port is 58846
+- **qBittorrent host**: Must include the protocol (`http://` or `https://`) and port
+- **File paths**: Ensure file paths are accessible to both torrent clients (especially important with Docker volumes)
+- **Network access**: Verify both services are reachable from your machine
 
 ## Usage
 
-```powershell
+```bash
 uv run python main.py
 ```
 
@@ -67,7 +74,7 @@ uv run python main.py
 
 This project uses `uv` for dependency management.
 
-```powershell
+```bash
 # Add a new dependency
 uv add <package-name>
 
