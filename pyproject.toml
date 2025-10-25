@@ -1,0 +1,10 @@
+[project]
+name = "deluge2qbittorrent"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.14"
+dependencies = [
+    "deluge-client>=1.10.2",
+    "python-qbittorrent>=0.4.3",
+]
