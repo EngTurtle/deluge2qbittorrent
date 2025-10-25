@@ -1,10 +1,10 @@
 # deluge2qbittorrent
 
-A Python utility to migrate torrents from Deluge to qBittorrent when both applications are running in Docker containers on a remote server.
+A Python utility to migrate torrents from Deluge to qBittorrent via their respective APIs.
 
 ## Features
 
-- **Remote Docker Support**: Connects to Deluge and qBittorrent instances via API
+- **Remote and Local instance support**: Connects to Deluge and qBittorrent instances via API
 - **State Preservation**: Maintains torrent state including:
   - Paused/active status
   - Labels/categories
