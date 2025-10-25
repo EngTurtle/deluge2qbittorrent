@@ -51,13 +51,13 @@ version = "0.1.0"
 source = { virtual = "." }
 dependencies = [
     { name = "deluge-client" },
-    { name = "python-qbittorrent" },
+    { name = "qbittorrent-api" },
 ]
 
 [package.metadata]
 requires-dist = [
     { name = "deluge-client", specifier = ">=1.10.2" },
-    { name = "python-qbittorrent", specifier = ">=0.4.3" },
+    { name = "qbittorrent-api", specifier = ">=2025.7.0" },
 ]
 
 [[package]]
@@ -70,15 +70,26 @@ wheels = [
 ]
 
 [[package]]
-name = "python-qbittorrent"
-version = "0.4.3"
+name = "packaging"
+version = "25.0"
+source = { registry = "https://pypi.org/simple" }
+sdist = { url = "https://files.pythonhosted.org/packages/a1/d4/1fc4078c65507b51b96ca8f8c3ba19e6a61c8253c72794544580a7b6c24d/packaging-25.0.tar.gz", hash = "sha256:d443872c98d677bf60f6a1f2f8c1cb748e8fe762d2bf9d3148b5599295b0fc4f", size = 165727, upload-time = "2025-04-19T11:48:59.673Z" }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/20/12/38679034af332785aac8774540895e234f4d07f7545804097de4b666afd8/packaging-25.0-py3-none-any.whl", hash = "sha256:29572ef2b1f17581046b3a2227d5c611fb25ec70ca1ba8554b24b0e69331a484", size = 66469, upload-time = "2025-04-19T11:48:57.875Z" },
+]
+
+[[package]]
+name = "qbittorrent-api"
+version = "2025.7.0"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
+    { name = "packaging" },
     { name = "requests" },
+    { name = "urllib3" },
 ]
-sdist = { url = "https://files.pythonhosted.org/packages/86/25/a5ad35ad229c8016a8c98327495e649cb795be2fda63f8cace6c9a739af7/python-qbittorrent-0.4.3.tar.gz", hash = "sha256:4e22cf89890628b054a60aa4bd1161a68c2b0fad48ef0886fa4d325e69d3828a", size = 9732, upload-time = "2022-09-30T05:55:47.07Z" }
+sdist = { url = "https://files.pythonhosted.org/packages/7b/a2/e6e303b70f2db5a2cc2997a611b424b24a7715e1ef360b0fdaf8007ef8ab/qbittorrent_api-2025.7.0.tar.gz", hash = "sha256:f462f2817559ccaa4c6cdc12694a3153efacd50fa3285a425401ab30abc0de76", size = 1321951, upload-time = "2025-07-12T18:45:33.754Z" }
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/e2/83/9dd55e6c916b1dc6ce1fdd373c1c0c4aa1635bbc5f2e1c8770987625631f/python_qbittorrent-0.4.3-py3-none-any.whl", hash = "sha256:dc2583226b69916ab96735537abd7696acc52e02e2d4d7afd10fa976f10d3aaa", size = 9758, upload-time = "2022-09-30T05:55:45.378Z" },
+    { url = "https://files.pythonhosted.org/packages/e2/34/f9cb6f8ce8dbcd15d839d81f55846d33cee312f2f153d30dfbc7118380b4/qbittorrent_api-2025.7.0-py3-none-any.whl", hash = "sha256:6cd79af4757ec71a64e5216cbaa50bf2c436efea0d32b9a79585e0ec21e85ea9", size = 66041, upload-time = "2025-07-12T18:45:31.636Z" },
 ]
 
 [[package]]

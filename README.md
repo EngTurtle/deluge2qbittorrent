@@ -5,12 +5,14 @@ A Python utility to migrate torrents from Deluge to qBittorrent via their respec
 ## Features
 
 - **Remote and Local instance support**: Connects to Deluge and qBittorrent instances via API
+- **Renamed Files/Folders Support**: Preserves file and folder renames from Deluge to qBittorrent
 - **State Preservation**: Maintains torrent state including:
   - Paused/active status
   - Labels/categories
   - Save paths
   - Progress tracking
-- **Python-based**: Uses Python client libraries (`deluge-client` and `python-qbittorrent`)
+  - Renamed files and folders
+- **Python-based**: Uses Python client libraries (`deluge-client` and `qbittorrent-api`)
 
 ## Prerequisites
 

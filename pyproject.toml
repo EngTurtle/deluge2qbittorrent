@@ -6,5 +6,5 @@ readme = "README.md"
 requires-python = ">=3.14"
 dependencies = [
     "deluge-client>=1.10.2",
-    "python-qbittorrent>=0.4.3",
+    "qbittorrent-api>=2025.7.0",
 ]
