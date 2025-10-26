@@ -48,6 +48,7 @@ class Config:
         return self._config.get("logging", {"log_level": "INFO"})
 
 
+
 def load_config(config_path: Path = Path("config.toml")) -> Config:
     """Load configuration from TOML file.
 

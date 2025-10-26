@@ -32,10 +32,6 @@ def main():
     except (ConnectionRefusedError, qbittorrentapi.APIConnectionError) as e:
         logger.error(f"Connection failed: {e}")
         sys.exit(1)
-    except Exception as e:
-        logger.error(f"Unexpected error: {e}")
-        sys.exit(1)
-
 
 if __name__ == "__main__":
     main()
