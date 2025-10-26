@@ -188,7 +188,7 @@ def migrate_single_torrent(
 
     # Compare and rename files that don't match
     files_renamed = 0
-    logger.info("  Renaming files to match Deluge")
+    logger.debug("  Renaming files to match Deluge")
     for qbt_file in qbt_files:
         qbt_name = qbt_file.name
         index = qbt_file['index']
@@ -203,7 +203,7 @@ def migrate_single_torrent(
 
     # Recheck torrent in qBittorrent
     time.sleep(1)
-    logger.debug("  Starting recheck...")
+    logger.info("  Starting recheck...")
     qbt_torrent.recheck()
 
     # Wait for recheck to complete
