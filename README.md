@@ -27,7 +27,7 @@ A Python utility to migrate torrents from Deluge to qBittorrent via their respec
 - qBittorrent Web UI credentials (host, username, password)
 - Access to Deluge state folder (contains `.torrent` files)
 
-## Installation
+## Run Instructions
 
 ### Option 1: Docker (Recommended for servers)
 
@@ -64,7 +64,7 @@ docker run --rm \
     Deluge's hash.torrent files. 
   - `:ro` flag mounts read-only for safety
 
-### Option 2: Local Installation
+### Option 2: Local Execution
 
 1. Clone this repository:
 
