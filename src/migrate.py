@@ -65,9 +65,11 @@ def deluge_migrate_qbittorrent(deluge_client: DelugeRPCClient, qbt_client: Qbitt
         if not qbt_client.is_logged_in:
             qbt_client.auth_log_in(username=config.qbittorrent.get('username'),
                                    password=config.qbittorrent.get('password'))
+            last_qbt_login = time.time()
         if (time.time() - last_qbt_login) > (0.75 * session_qbt_timeout):
             qbt_client.auth_log_in(username=config.qbittorrent.get('username'),
                                    password=config.qbittorrent.get('password'))
+            last_qbt_login = time.time()
 
         migrate_single_torrent(
             deluge_client,
