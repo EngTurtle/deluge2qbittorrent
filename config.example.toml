@@ -1,3 +1,8 @@
+[logging]
+# Log level: DEBUG, INFO, WARNING, ERROR, CRITICAL
+# INFO shows essential progress, DEBUG shows detailed information
+log_level = "INFO"
+
 [deluge]
 host = "192.168.1.100"
 port = 58846
@@ -8,3 +13,16 @@ password = "deluge_password"
 host = "http://192.168.1.100:8080"
 username = "admin"
 password = "qbittorrent_password"
+
+[migration]
+# Test mode: only migrate a single torrent for development/testing
+test_mode = true
+
+# Test torrent name: which torrent to migrate when test_mode is enabled
+test_torrent_name = "test torrent name"
+
+# Auto-delete: whether to delete torrents from Deluge after successful migration
+auto_delete = false
+
+# Auto-resume: whether to resume torrents in qBittorrent after migration
+auto_resume = false

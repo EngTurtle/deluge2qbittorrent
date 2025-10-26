@@ -4,15 +4,19 @@ import sys
 from loguru import logger
 
 
-def setup_logging():
-    """Configure logging for the application."""
+def setup_logging(log_level: str = "INFO"):
+    """Configure logging for the application.
+
+    Args:
+        log_level: Logging level (DEBUG, INFO, WARNING, ERROR, CRITICAL)
+    """
     logger.remove()  # Remove default handler
 
-    # Log INFO and DEBUG to stdout
+    # Log at configured level and DEBUG to stdout
     logger.add(
         sys.stdout,
         format="<level>{level}: {message}</level>",
-        level="INFO",
+        level=log_level.upper(),
         filter=lambda record: record["level"].no < 30  # Less than WARNING
     )
 

@@ -13,17 +13,19 @@ from src.migrate import deluge_migrate_qbittorrent
 
 def main():
     """Main entry point for the migration tool."""
-    setup_logging()
+    # Load configuration first (with basic logging)
+    config = load_config()
+
+    # Setup logging with configured level
+    log_level = config.logging.get("log_level", "INFO")
+    setup_logging(log_level)
 
     logger.info("Deluge to qBittorrent Migration Tool")
-
-    # Load configuration
-    config = load_config()
 
     # Connect to both clients
     try:
         with connect_deluge(config) as deluge_client, connect_qbittorrent(config) as qbt_client:
-            deluge_migrate_qbittorrent(deluge_client, qbt_client)
+            deluge_migrate_qbittorrent(deluge_client, qbt_client, config)
     except (RemoteException, qbittorrentapi.LoginFailed) as e:
         logger.error(f"Authentication failed: {e}")
         sys.exit(1)

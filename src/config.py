@@ -21,7 +21,7 @@ class Config:
 
     def _validate(self):
         """Validate required configuration sections."""
-        required_sections = ["deluge", "qbittorrent"]
+        required_sections = ["deluge", "qbittorrent", "migration"]
         for section in required_sections:
             if section not in self._config:
                 logger.error(f"Missing required section '{section}' in config file")
@@ -36,6 +36,16 @@ class Config:
     def qbittorrent(self) -> dict[str, Any]:
         """Get qBittorrent configuration."""
         return self._config["qbittorrent"]
+
+    @property
+    def migration(self) -> dict[str, Any]:
+        """Get migration configuration."""
+        return self._config["migration"]
+
+    @property
+    def logging(self) -> dict[str, Any]:
+        """Get logging configuration."""
+        return self._config.get("logging", {"log_level": "INFO"})
 
 
 def load_config(config_path: Path = Path("config.toml")) -> Config:
